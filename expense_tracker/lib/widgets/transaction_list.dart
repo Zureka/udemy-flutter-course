@@ -10,16 +10,18 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: transactions
-          .map(
-            (tx) => _buildTransactionItem(tx),
-          )
-          .toList(),
+    return Container(
+      height: 250,
+      child: ListView.builder(
+        itemCount: transactions.length,
+        itemBuilder: _buildTransactionItem,
+      ),
     );
   }
 
-  Widget _buildTransactionItem(Transaction tx) {
+  Widget _buildTransactionItem(BuildContext context, int index) {
+    Transaction tx = transactions.elementAt(index);
+
     return Card(
       child: Row(
         children: <Widget>[
@@ -36,7 +38,7 @@ class TransactionList extends StatelessWidget {
             ),
             padding: EdgeInsets.all(10.0),
             child: Text(
-              '\$${tx.amount}',
+              '\$${tx.amount.toStringAsFixed(2)}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
