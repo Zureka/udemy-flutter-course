@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import './adaptive_flat_button.dart';
+
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
@@ -50,7 +52,8 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return SingleChildScrollView(
+      child: Card(
       elevation: 5,
       child: Container(
         padding: EdgeInsets.all(10),
@@ -83,14 +86,10 @@ class _NewTransactionState extends State<NewTransaction> {
                           : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                     ),
                   ),
-                  FlatButton(
-                    child: Text(
+                    AdaptiveFlatutton(
                       'Choose Date',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      _presentDatePicker,
                     ),
-                    textColor: Theme.of(context).primaryColor,
-                    onPressed: _presentDatePicker,
-                  )
                 ],
               ),
             ),
@@ -106,6 +105,7 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
           ],
         ),
+      ),
       ),
     );
   }
