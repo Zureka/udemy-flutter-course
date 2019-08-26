@@ -77,7 +77,7 @@ class _NewTransactionState extends State<NewTransaction> {
                   labelText: 'Amount',
                 ),
                 controller: _amountController,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
                 onSubmitted: (_) => _submitData(),
               ),
               Container(
@@ -91,7 +91,7 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                    AdaptiveFlatutton(
+                    AdaptiveFlatButton(
                       'Choose Date',
                       _presentDatePicker,
                     ),
